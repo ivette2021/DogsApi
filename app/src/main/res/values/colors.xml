@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="negro">#FF000000</color>
+    <color name="blanco">#F2F2F2</color>
+    <color name="coral">#F2594B</color>
+    <color name="fucsia">#F25764</color>
+    <color name="rosa">#F291A3</color>
+    <color name="azul_o">#1A1C39</color>
+    <color name="azul_m">#282B59</color>
+    <color name="azul_c">#353BA3</color>
+    <color name="azul_c_2">#494EA1</color>
+    <color name="azul_d">#424359</color>
+    <color name="turquesa">#63BFAE</color>
+    <color name="amarillo">#F2B441</color>
+    <color name="naranjo_o">#F27405</color>
+    <color name="naranjo_c">#F2913D</color>
+    <color name="piel_o">#F2B279</color>
+    <color name="piel_c">#F2E4D8</color>
+    <color name="piel_m">#F2B279</color>
+</resources>
