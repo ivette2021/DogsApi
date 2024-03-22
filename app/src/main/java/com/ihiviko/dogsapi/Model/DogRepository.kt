@@ -24,6 +24,7 @@ class DogRepository(private val dogDao: DogDao) {
             Log.e("REPO", "${it.message}")
         }
     }
+    // test
     //Recibe la raza y realiza la solicitud guardando el elemento en la Base de datos.
     suspend fun fetchDogImages(breed: String) {
         val service = kotlin.runCatching { networkService.getImagesList(breed) }
