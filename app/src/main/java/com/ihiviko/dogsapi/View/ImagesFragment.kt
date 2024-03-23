@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ihiviko.dogsapi.ImagesAdapter
-import com.ihiviko.dogsapi.R
 import com.ihiviko.dogsapi.ViewModel.DogViewModel
 import com.ihiviko.dogsapi.databinding.FragmentImagesBinding
 
@@ -29,16 +28,13 @@ class ImagesFragment : Fragment() {
 
         val breed = arguments?.getString("breed") ?: ""
         val adapter = ImagesAdapter()
-        binding.tbImages.setTitle("Imagenes de razas: $breed")
+        binding.tbImages.setTitle("Raza: $breed")
         binding.rvImages.adapter = adapter
-        binding.rvImages.layoutManager = GridLayoutManager(requireContext(), 1)
+        binding.rvImages.layoutManager = GridLayoutManager(requireContext(), 2)
         viewModel.getImagesByBreedFromInternet(breed)
         viewModel.getImages().observe(viewLifecycleOwner) {
             it?.let {adapter.update(it)  }
         }
-
         binding.fabBack.setOnClickListener { parentFragmentManager.popBackStack() }
     }
-
-
 }

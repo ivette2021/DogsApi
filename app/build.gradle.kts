@@ -1,9 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-}
 
+    id("com.google.devtools.ksp")
+}
 android {
     namespace = "com.ihiviko.dogsapi"
     compileSdk = 34
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         dataBinding = true
@@ -40,8 +40,6 @@ android {
 }
 
 dependencies {
-
-    // Otras dependencias...
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -54,10 +52,10 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.11.0")
     implementation ("androidx.fragment:fragment-ktx:1.6.1")
-    kapt("com.github.bumptech.glide:compiler:4.13.0")
+    ksp("com.github.bumptech.glide:compiler:4.15.1")
 
-    implementation("androidx.room:room-runtime:2.5.2")
-    kapt("androidx.room:room-compiler:2.5.2")
+    implementation ("androidx.room:room-ktx:2.6.0")
+    ksp("androidx.room:room-compiler:2.6.0")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
@@ -70,13 +68,13 @@ dependencies {
     }
 
     implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    ksp("com.google.dagger:hilt-android-compiler:2.44")
 
     // Para pruebas con Robolectric
     testImplementation("com.google.dagger:hilt-android-testing:2.44")
-    kaptTest("com.google.dagger:hilt-android-compiler:2.44")
+    kspAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
 
     // Para pruebas instrumentadas
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
+    kspAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
 }

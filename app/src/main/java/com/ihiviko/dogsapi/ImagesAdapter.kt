@@ -26,7 +26,7 @@ class ImagesAdapter : RecyclerView.Adapter<ImagesAdapter.VH>() {
         fun bind(image : DogDetailEntity) {
             Glide.with(binding.root)
                 .load(image.imageUrl)
-                .fitCenter()
+                .centerCrop()
                 .into(binding.imgDog)
             itemView.setOnLongClickListener(this)
         }

@@ -8,7 +8,7 @@ import com.ihiviko.dogsapi.Model.Local.DogDao
 import com.ihiviko.dogsapi.Model.Local.Entities.DogDetailEntity
 import com.ihiviko.dogsapi.Model.Local.Entities.DogEntity
 
-@Database(entities = [DogEntity::class, DogDetailEntity::class], version = 1, exportSchema = false)
+@Database(entities = [DogEntity::class, DogDetailEntity::class], version = 1, exportSchema = false)  //colocamos las dos entidades que definimos anteriormente
 abstract class DogDataBase : RoomDatabase() {
     abstract fun dogDao(): DogDao
     companion object {
@@ -25,7 +25,7 @@ abstract class DogDataBase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     DogDataBase::class.java,
-                    "dogs_database"
+                    "Dogs_Api"
                 ).build()
                 INSTANCE = instance
                 return instance

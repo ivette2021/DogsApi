@@ -10,6 +10,7 @@ import com.ihiviko.dogsapi.Model.Local.Entities.DogEntity
 
 @Dao
 interface DogDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllBreedList(listBreed: List<DogEntity>)
 
