@@ -1,11 +1,14 @@
 package com.ihiviko.dogsapi.View
 
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ihiviko.dogsapi.DogAdapter
@@ -61,14 +64,24 @@ class StartFragment : Fragment(){
         }
     }
     private fun showAlertDialog(breed: String) {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Seleccionaste $breed")
-            .setMessage("Buena Eleccion ! $breed")
+        val alertDialog = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .setTitle("*************************************")
+            .setMessage("La raza Seleccionada es : $breed")
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
-    }
+
+        // Aplicar el estilo al subtexto
+        val textView = alertDialog.findViewById<TextView>(android.R.id.message)
+        textView?.setTextAppearance(R.style.CustomAlertDialogMessage)
+
+        // Aplicar el estilo al botón "OK"
+        alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)?.apply {
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.coral))
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 25f)
+        }
+}
 
     private fun launchImagesFragment(){
         val fragment = ImagesFragment()

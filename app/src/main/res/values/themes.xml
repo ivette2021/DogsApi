@@ -11,4 +11,30 @@
         <item name="android:textStyle">bold</item>
     </style>
     <style name="Theme.DogsApi" parent="Base.Theme.DogsApi" />
+
+
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Cambiar el color de fondo -->
+        <item name="android:background">@color/piel_o</item>
+        <!-- Cambiar la tipografía y estilo del texto -->
+        <item name="android:textColor">@color/azul_o</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/CustomAlertDialogTextAppearance</item>
+        <!-- borde curvo -->
+        <item name="android:windowBackground">@drawable/custom_dialog_window_background</item>
+    </style>
+
+    <style name="CustomAlertDialogTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="CustomAlertDialogMessage" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/comfortaa</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/azul_m</item>
+    </style>
+    <style name="CustomAlertDialogButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/coral</item>
+        <item name="android:textSize">20sp</item> <!-- Tamaño de la letra personalizado -->
+    </style>
 </resources>
