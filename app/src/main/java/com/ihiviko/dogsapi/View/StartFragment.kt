@@ -60,11 +60,10 @@ class StartFragment : Fragment(){
             }
         }
     }
-    // Implementación de la interfaz OnBreedSelectedListener
-    override fun onBreedSelected(breed: DogEntity) {
-        // Mostrar AlertDialog
+    private fun showAlertDialog(breed: String) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Seleccionaste ${breed.breed}")
+            .setTitle("Seleccionaste $breed")
+            .setMessage("Buena Eleccion ! $breed")
             .setPositiveButton("OK") { dialog, _ ->
                 dialog.dismiss()
             }

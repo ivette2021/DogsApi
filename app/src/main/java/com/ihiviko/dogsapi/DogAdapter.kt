@@ -14,6 +14,8 @@ import com.ihiviko.dogsapi.databinding.ItemDogBinding
 class DogAdapter(private val context: Context) : RecyclerView.Adapter<DogAdapter.VH>() {
     private var listBreed = listOf<DogEntity>()
     private val selectedBreed = MutableLiveData<DogEntity>()
+    private lateinit var onBreedSelectedListener: OnBreedSelectedListener
+
 
     fun update(list : List<DogEntity>){
         listBreed =list
@@ -21,6 +23,14 @@ class DogAdapter(private val context: Context) : RecyclerView.Adapter<DogAdapter
     }
 
     fun selectedBreed(): LiveData<DogEntity> = selectedBreed
+
+    fun setOnBreedSelectedListener(listener: OnBreedSelectedListener) {
+        this.onBreedSelectedListener = listener
+    }
+
+    interface OnBreedSelectedListener {
+        fun onBreedSelected(breed: DogEntity)
+    }
 
     inner class VH(private val binding: ItemDogBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener{
@@ -32,7 +42,7 @@ class DogAdapter(private val context: Context) : RecyclerView.Adapter<DogAdapter
         override fun onClick(v: View?) {
             val breed = listBreed[adapterPosition]
             selectedBreed.value = breed
-            showAlertDialog(breed.breed)
+            onBreedSelectedListener.onBreedSelected(breed)
             //selectedBreed.value = listBreed[adapterPosition]
         }
     }
@@ -47,13 +57,4 @@ class DogAdapter(private val context: Context) : RecyclerView.Adapter<DogAdapter
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(listBreed[position])
     }
-    private fun showAlertDialog(breed: String) {
-        AlertDialog.Builder(context)
-            .setTitle("Seleccionaste $breed")
-            .setMessage("Aquí irá la raza $breed")
-            .setPositiveButton("OK") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .show()
-}
 }
