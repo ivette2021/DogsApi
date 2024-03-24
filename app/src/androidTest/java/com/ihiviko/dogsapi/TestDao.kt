@@ -1,4 +1,5 @@
 package com.ihiviko.dogsapi
+
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -24,11 +25,6 @@ class TestDao {
         dDB=  Room.inMemoryDatabaseBuilder(context,DogDataBase::class.java).build()
         dDao=dDB.dogDao()
     }
-    @After
-    fun shutdown(){
-        dDB.close()
-    }
-
     @Test
     fun testInsertRazas() = runBlocking  {
         val RazasList= listOf(
@@ -46,4 +42,9 @@ class TestDao {
         MatcherAssert.assertThat(listRazas.size, CoreMatchers.equalTo(4))
 
     }
+    @After
+    fun shutdown(){
+        dDB.close()
+    }
+
 }

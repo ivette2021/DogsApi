@@ -46,6 +46,7 @@ dependencies {
 
     implementation("com.github.bumptech.glide:glide:4.13.0")
     implementation("androidx.test.ext:junit-ktx:1.1.5")
+    testImplementation ("junit:junit:4.13.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -58,17 +59,27 @@ dependencies {
     ksp("androidx.room:room-compiler:2.6.0")
 
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
-    testImplementation("org.mockito:mockito-core:1.10.19")
 
-    implementation("com.squareup.okhttp3:okhttp:4.9.3")
-    testImplementation("com.squareup.okhttp3:mockwebserver:4.9.3")
-    configurations.all {
-        exclude(module = "okhttp-ws")
-    }
+
+    // dependencias de mockWebserver
+
+    testImplementation ("org.mockito:mockito-core:3.6.0")
+    testImplementation ("org.mockito:mockito-inline:3.6.0")
+
+
+    // Dependencia de OkHttp
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
+
+    // Dependencia de OkHttp MockWebServer (para pruebas)
+    testImplementation("com.squareup.okhttp3:mockwebserver:5.0.0-alpha.2")
+    testImplementation ("io.mockk:mockk:1.12.0")
+
+
 
     implementation("com.google.dagger:hilt-android:2.44")
-    ksp("com.google.dagger:hilt-android-compiler:2.44")
+    kspTest("com.google.dagger:hilt-android-compiler:2.44")
 
     // Para pruebas con Robolectric
     testImplementation("com.google.dagger:hilt-android-testing:2.44")
